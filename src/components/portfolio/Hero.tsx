@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Code2, ArrowDown } from "lucide-react";
+import { Terminal } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -7,9 +8,9 @@ const fadeInUp = {
 };
 
 const socialLinks = [
-  { icon: Github, label: "GitHub", href: "https://github.com/nishantpanjabi" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/nishantpanjabi" },
-  { icon: Code2, label: "LeetCode", href: "https://leetcode.com/nishantpanjabi" },
+  { Icon: Github, label: "GitHub", href: "https://github.com/nishantpanjabi" },
+  { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/nishantpanjabi" },
+  { Icon: Code2, label: "LeetCode", href: "https://leetcode.com/nishantpanjabi" },
 ];
 
 export default function Hero() {
@@ -40,19 +41,18 @@ export default function Hero() {
         {/* Status badge */}
         <motion.div
           {...fadeInUp}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 skill-tile border border-primary/20"
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-mono text-primary/80 tracking-wide">Open to opportunities</span>
+          <span className="text-xs font-mono" style={{ color: "hsl(199 89% 65%)" }}>Open to opportunities</span>
         </motion.div>
 
         {/* Name */}
         <motion.h1
           {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tighter"
-          style={{ textWrap: "balance" } as React.CSSProperties}
         >
           <span className="text-foreground">Nishant </span>
           <span className="text-gradient-hero">Panjabi</span>
@@ -61,8 +61,9 @@ export default function Hero() {
         {/* Headline */}
         <motion.p
           {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="text-lg md:text-xl font-mono text-primary/90 mb-6 tracking-tight"
+          transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
+          className="text-lg md:text-xl font-mono mb-6 tracking-tight"
+          style={{ color: "hsl(199 89% 65%)" }}
         >
           Computer Science Engineer · Developer · Problem Solver
         </motion.p>
@@ -70,9 +71,9 @@ export default function Hero() {
         {/* Description */}
         <motion.p
           {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
           className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ color: "hsl(210 40% 75%)", textWrap: "pretty" } as React.CSSProperties}
+          style={{ color: "hsl(210 40% 75%)" }}
         >
           I am a Computer Science undergraduate passionate about building intelligent systems,
           solving challenging algorithmic problems, and designing meaningful digital experiences.
@@ -82,7 +83,7 @@ export default function Hero() {
         {/* Buttons */}
         <motion.div
           {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.55, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <motion.button
@@ -107,10 +108,10 @@ export default function Hero() {
         {/* Social links */}
         <motion.div
           {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.55, delay: 0.5, ease: "easeOut" }}
           className="flex items-center justify-center gap-4"
         >
-          {socialLinks.map(({ icon: Icon, label, href }) => (
+          {socialLinks.map(({ Icon, label, href }) => (
             <motion.a
               key={label}
               href={href}
@@ -131,7 +132,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.2, ease: "easeOut" }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >
         <motion.div

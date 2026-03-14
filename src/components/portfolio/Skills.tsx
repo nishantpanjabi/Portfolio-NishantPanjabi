@@ -41,7 +41,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-16"
         >
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-3">04 — Skills</p>
@@ -56,7 +56,7 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: gi * 0.07, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.45, delay: gi * 0.07, ease: "easeOut" }}
               className="glass-card p-5"
             >
               <div className="flex items-center gap-2 mb-4">
@@ -75,11 +75,14 @@ export default function Skills() {
                     initial={{ opacity: 0, scale: 0.85 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: gi * 0.07 + si * 0.04, ease: [0.4, 0, 0.2, 1] }}
+                    transition={{ duration: 0.3, delay: gi * 0.07 + si * 0.04, ease: "easeOut" }}
                     whileHover={{ y: -4, scale: 1.05 }}
                     className="skill-tile text-xs px-3 py-1.5 rounded-lg cursor-default font-mono"
                     style={{
-                      color: group.color === "primary" ? "hsl(var(--primary) / 0.9)" : "hsl(var(--accent) / 0.9)",
+                      color:
+                        group.color === "primary"
+                          ? "hsl(199 89% 55%)"
+                          : "hsl(250 89% 72%)",
                     }}
                   >
                     {skill}

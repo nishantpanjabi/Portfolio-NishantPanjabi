@@ -3,7 +3,7 @@ import { BookOpen, Palette } from "lucide-react";
 
 const experiences = [
   {
-    icon: BookOpen,
+    Icon: BookOpen,
     role: "Teaching Assistant",
     supervisor: "Dr. Renuka Pawar",
     organization: "SPIT",
@@ -15,9 +15,9 @@ const experiences = [
     color: "primary",
   },
   {
-    icon: Palette,
+    Icon: Palette,
     role: "Head of Creatives",
-    supervisor: null,
+    supervisor: null as string | null,
     organization: "Sports Committee, SPIT",
     type: "Leadership",
     description:
@@ -36,7 +36,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-16"
         >
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-3">06 — Experience</p>
@@ -51,7 +51,7 @@ export default function Experience() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               whileHover={{ y: -4 }}
               className="glass-card p-6 flex flex-col gap-4 transition-all duration-300"
             >
@@ -64,7 +64,7 @@ export default function Experience() {
                     border: `1px solid ${exp.color === "primary" ? "rgba(14,165,233,0.2)" : "rgba(139,92,246,0.2)"}`,
                   }}
                 >
-                  <exp.icon
+                  <exp.Icon
                     className="w-4 h-4"
                     style={{ color: exp.color === "primary" ? "hsl(var(--primary))" : "hsl(var(--accent))" }}
                   />
@@ -97,7 +97,8 @@ export default function Experience() {
                 {exp.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs px-2 py-0.5 rounded font-mono bg-white/4 border border-white/8 text-muted-foreground"
+                    className="text-xs px-2 py-0.5 rounded font-mono text-muted-foreground"
+                    style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
                   >
                     {skill}
                   </span>

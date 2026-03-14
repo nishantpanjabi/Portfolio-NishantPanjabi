@@ -5,7 +5,7 @@ const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+  transition: { duration: 0.5, ease: "easeOut" as const },
 };
 
 const traits = [
@@ -31,8 +31,10 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="space-y-5"
           >
             <p className="text-base leading-relaxed" style={{ color: "hsl(210 40% 78%)" }}>
@@ -74,7 +76,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
+                transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
                 whileHover={{ y: -4 }}
                 className="glass-card p-5"
               >

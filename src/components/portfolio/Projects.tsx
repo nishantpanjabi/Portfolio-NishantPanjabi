@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Eye, AlertCircle } from "lucide-react";
 import { useState } from "react";
+import { AlertCircle } from "lucide-react";
 
 const projects = [
   {
@@ -45,11 +45,6 @@ const projects = [
   },
 ];
 
-const tagColors: Record<string, string> = {
-  primary: "text-primary border-primary/25 bg-primary/8",
-  accent: "text-accent border-accent/25 bg-accent/8",
-};
-
 export default function Projects() {
   const [tooltip, setTooltip] = useState<string | null>(null);
 
@@ -60,7 +55,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-16"
         >
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-3">03 — Projects</p>
@@ -75,8 +70,8 @@ export default function Projects() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
-              className="project-card group relative overflow-hidden aspect-auto flex flex-col"
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+              className="project-card group relative overflow-hidden flex flex-col"
               style={{ minHeight: "280px" }}
             >
               {/* Accent glow on hover */}
@@ -97,26 +92,26 @@ export default function Projects() {
                     <h3 className="text-lg font-bold text-foreground tracking-tight">{project.title}</h3>
                     <p
                       className="text-xs font-mono mt-0.5"
-                      style={{ color: project.color === "primary" ? "hsl(var(--primary))" : "hsl(var(--accent))" }}
+                      style={{
+                        color: project.color === "primary" ? "hsl(var(--primary))" : "hsl(var(--accent))",
+                      }}
                     >
                       {project.subtitle}
                     </p>
                   </div>
                   {/* Design Logic tooltip */}
                   <div className="relative">
-                    <motion.button
+                    <button
                       onMouseEnter={() => setTooltip(project.title)}
                       onMouseLeave={() => setTooltip(null)}
                       className="p-2 rounded-lg hover:bg-white/5 transition-colors"
-                      title="Design Logic"
                     >
                       <AlertCircle className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-                    </motion.button>
+                    </button>
                     {tooltip === project.title && (
                       <motion.div
                         initial={{ opacity: 0, y: 8, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0 }}
                         className="absolute right-0 top-8 z-20 w-56 glass-card p-3 text-xs text-muted-foreground leading-relaxed"
                       >
                         <span className="text-primary font-medium block mb-1">Design Logic</span>
@@ -134,7 +129,12 @@ export default function Projects() {
                   {project.highlights.map((h) => (
                     <span
                       key={h}
-                      className={`text-xs px-2 py-0.5 rounded border font-mono ${tagColors[project.color]}`}
+                      className="text-xs px-2 py-0.5 rounded border font-mono"
+                      style={{
+                        color: project.color === "primary" ? "hsl(var(--primary) / 0.9)" : "hsl(var(--accent) / 0.9)",
+                        borderColor: project.color === "primary" ? "rgba(14,165,233,0.25)" : "rgba(139,92,246,0.25)",
+                        background: project.color === "primary" ? "rgba(14,165,233,0.06)" : "rgba(139,92,246,0.06)",
+                      }}
                     >
                       {h}
                     </span>
@@ -146,7 +146,8 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2 py-0.5 rounded bg-white/4 border border-white/8 text-muted-foreground font-mono"
+                      className="text-xs px-2 py-0.5 rounded font-mono text-muted-foreground"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
                     >
                       {tag}
                     </span>
