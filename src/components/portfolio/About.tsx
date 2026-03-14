@@ -17,7 +17,7 @@ const traits = [
 
 export default function About() {
   return (
-    <section id="about" className="py-28 px-6 relative overflow-hidden">
+    <section id="about" className="py-16 px-6 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div {...fadeInUp} className="mb-16">

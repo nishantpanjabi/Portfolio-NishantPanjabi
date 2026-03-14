@@ -35,7 +35,7 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28 px-6 relative">
+    <section id="skills" className="py-16 px-6 relative">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

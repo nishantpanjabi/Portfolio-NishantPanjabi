@@ -33,7 +33,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-28 px-6 relative">
+    <section id="achievements" className="py-16 px-6 relative">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

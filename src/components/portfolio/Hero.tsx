@@ -27,15 +27,34 @@ export default function Hero() {
       <div className="mesh-gradient" />
       <div className="mesh-gradient-extra" />
 
-      {/* Geometric grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="floating-particle w-2 h-2 bg-primary/30 top-1/4 left-1/4"></div>
+        <div className="floating-particle w-3 h-3 bg-accent/20 top-1/3 right-1/4"></div>
+        <div className="floating-particle w-1.5 h-1.5 bg-primary/40 bottom-1/4 left-1/3"></div>
+        <div className="floating-particle w-2.5 h-2.5 bg-accent/25 top-2/3 right-1/3"></div>
+        <div className="floating-particle w-1 h-1 bg-primary/50 bottom-1/3 right-1/5"></div>
+        
+        {/* Rotating geometric shapes */}
+        <motion.div
+          className="absolute top-20 left-20 w-8 h-8 border-2 border-primary/20"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-32 right-16 w-6 h-6 border-2 border-accent/20 rotate-45"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-10 w-4 h-4 bg-primary/10 rounded-full"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         {/* Status badge */}
@@ -45,14 +64,28 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 skill-tile border border-primary/20"
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-mono" style={{ color: "hsl(199 89% 65%)" }}>Open to opportunities</span>
+          <span className="text-xs font-mono text-gradient-cyan">Open to opportunities</span>
         </motion.div>
 
         {/* Name */}
         <motion.h1
-          {...fadeInUp}
-          transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            textShadow: [
+              "0 0 20px rgba(147, 51, 234, 0.3)",
+              "0 0 30px rgba(236, 72, 153, 0.3)",
+              "0 0 20px rgba(147, 51, 234, 0.3)"
+            ]
+          }}
+          transition={{ 
+            opacity: { duration: 0.55, delay: 0.1, ease: "easeOut" },
+            y: { duration: 0.55, delay: 0.1, ease: "easeOut" },
+            textShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tighter"
+          whileHover={{ scale: 1.05 }}
         >
           <span className="text-foreground">Nishant </span>
           <span className="text-gradient-hero">Panjabi</span>
@@ -62,8 +95,7 @@ export default function Hero() {
         <motion.p
           {...fadeInUp}
           transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-xl font-mono mb-6 tracking-tight"
-          style={{ color: "hsl(199 89% 65%)" }}
+          className="text-lg md:text-xl font-mono mb-6 tracking-tight text-gradient-cyan typewriter"
         >
           Computer Science Engineer · Developer · Problem Solver
         </motion.p>
@@ -72,8 +104,7 @@ export default function Hero() {
         <motion.p
           {...fadeInUp}
           transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
-          className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ color: "hsl(210 40% 75%)" }}
+          className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed text-muted-foreground"
         >
           I am a Computer Science undergraduate passionate about building intelligent systems,
           solving challenging algorithmic problems, and designing meaningful digital experiences.
@@ -111,15 +142,18 @@ export default function Hero() {
           transition={{ duration: 0.55, delay: 0.5, ease: "easeOut" }}
           className="flex items-center justify-center gap-4"
         >
-          {socialLinks.map(({ Icon, label, href }) => (
+          {socialLinks.map(({ Icon, label, href }, index) => (
             <motion.a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-lg skill-tile text-sm text-muted-foreground hover:text-foreground transition-colors"
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -3, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
             >
               <Icon className="w-4 h-4" />
               <span>{label}</span>

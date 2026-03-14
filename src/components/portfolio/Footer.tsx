@@ -26,9 +26,7 @@ export default function Footer() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xs text-muted-foreground text-center flex items-center gap-1.5"
           >
-            © 2026 Nishant Panjabi · Built with
-            <Heart className="w-3 h-3 text-primary inline" />
-            and modern web technologies.
+            © 2026 Nishant Panjabi 
           </motion.p>
 
           <motion.p
