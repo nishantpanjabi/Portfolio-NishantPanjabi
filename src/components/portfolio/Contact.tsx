@@ -21,7 +21,7 @@ export default function Contact() {
 
   const socials = [
     { Icon: Github, label: "GitHub", href: "https://github.com/nishantpanjabi" },
-    { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/nishantpanjabi" },
+    { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/nishant-punjabi-/" },
     { Icon: Code2, label: "LeetCode", href: "https://leetcode.com/nishantpanjabi" },
   ];
 
