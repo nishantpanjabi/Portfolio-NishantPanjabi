@@ -1,49 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { AlertCircle } from "lucide-react";
-
-const projects = [
-  {
-    title: "RoadGuard",
-    subtitle: "Traffic Violation Detection System",
-    description:
-      "Automated system to detect traffic violations — helmet absence, red-light jumping, number plate detection — using computer vision pipelines.",
-    tags: ["YOLO", "ANPR", "OpenCV", "Python", "Deep Learning"],
-    color: "primary",
-    logic: "YOLO v8 was chosen for real-time inference speed (45fps) over accuracy-centric models — violations happen fast.",
-    highlights: ["Helmet Detection", "Red-light Monitoring", "ANPR"],
-  },
-  {
-    title: "Airline Reservation System",
-    subtitle: "Database Management Project",
-    description:
-      "Relational database system using MySQL to manage passengers, flights, tickets, luggage, insurance, services, and reservations with full CRUD operations.",
-    tags: ["Django", "MySQL", "Python", "SQL", "ORM"],
-    color: "accent",
-    logic: "Normalized to 3NF to eliminate update anomalies — critical for concurrent booking transactions.",
-    highlights: ["3NF Schema", "CRUD APIs", "Django ORM"],
-  },
-  {
-    title: "CodeArena",
-    subtitle: "Competitive Programming Platform",
-    description:
-      "A coding practice platform where users can solve algorithmic challenges, track progress, and improve problem-solving skills in a competitive environment.",
-    tags: ["React", "JavaScript", "API", "Algorithms"],
-    color: "primary",
-    logic: "Judge0 API offloads code execution to an isolated sandbox — eliminating server-side security risks.",
-    highlights: ["Code Execution", "Problem Sets", "Progress Tracking"],
-  },
-  {
-    title: "Chitrakolam",
-    subtitle: "Digital Kolam Design Platform",
-    description:
-      "A creative platform inspired by traditional Indian Kolam art where users can generate and explore geometric kolam patterns digitally.",
-    tags: ["React", "Canvas API", "JavaScript", "Generative Art"],
-    color: "accent",
-    logic: "Recursive L-system grammar generates authentic Kolam symmetry — preserving cultural geometric patterns.",
-    highlights: ["Generative Patterns", "Canvas Rendering", "Cultural Heritage"],
-  },
-];
+import { Link } from "react-router-dom";
+import { projects } from "@/lib/projects-data";
 
 export default function Projects() {
   const [tooltip, setTooltip] = useState<string | null>(null);
@@ -65,15 +24,15 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-              className="project-card group relative overflow-hidden flex flex-col"
-              style={{ minHeight: "280px" }}
-            >
+            <Link key={project.slug} to={`/projects/${project.slug}`} className="block">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                className="project-card group relative overflow-hidden flex flex-col"
+                style={{ minHeight: "280px" }}
+              >
               {/* Accent glow on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
@@ -102,6 +61,7 @@ export default function Projects() {
                   {/* Design Logic tooltip */}
                   <div className="relative">
                     <button
+                      onClick={(event) => event.preventDefault()}
                       onMouseEnter={() => setTooltip(project.title)}
                       onMouseLeave={() => setTooltip(null)}
                       className="p-2 rounded-lg hover:bg-white/5 transition-colors"
@@ -154,7 +114,8 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
