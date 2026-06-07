@@ -78,6 +78,18 @@ export default function ProjectDetail() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{project.title}</h1>
             <p className="text-lg text-muted-foreground max-w-3xl">{project.subtitle}</p>
             <p className="mt-5 text-sm md:text-base text-muted-foreground max-w-3xl">{caseStudy?.bannerTagline ?? project.description}</p>
+            {project.liveUrl && (
+              <div className="mt-4">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-gradient-to-r from-emerald-500 to-green-400 text-black text-sm font-medium"
+                >
+                  View Live
+                </a>
+              </div>
+            )}
           </div>
         </motion.section>
 
@@ -181,14 +193,21 @@ export default function ProjectDetail() {
         <motion.section variants={itemVariants} className="mb-12">
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-3">Screens</p>
           <div className="grid md:grid-cols-2 gap-4">
-            {(caseStudy?.screens ?? ["Primary Screen", "Secondary Screen"]).map((screen) => (
-              <div key={screen} className="glass-card p-5">
-                <div className="rounded-xl border border-dashed border-white/20 bg-white/5 h-44 flex items-center justify-center text-muted-foreground text-sm">
-                  {screen} Image Placeholder
+            {(caseStudy?.screens ?? ["Primary Screen", "Secondary Screen"]).map((screen) => {
+              const isImage = typeof screen === "string" && /\.(png|jpe?g|webp|svg)$/i.test(screen);
+              return (
+                <div key={screen} className="glass-card p-5">
+                  {isImage ? (
+                    <img src={screen as string} alt={project.title + " screen"} className="rounded-xl border border-white/10 bg-white/5 h-44 w-full object-cover" />
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-white/20 bg-white/5 h-44 flex items-center justify-center text-muted-foreground text-sm">
+                      {screen} Image Placeholder
+                    </div>
+                  )}
+                  <p className="mt-3 text-sm text-muted-foreground">{screen}</p>
                 </div>
-                <p className="mt-3 text-sm text-muted-foreground">{screen}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.section>
 

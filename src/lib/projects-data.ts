@@ -36,10 +36,72 @@ export interface Project {
   color: ProjectColor;
   logic: string;
   highlights: string[];
+  liveUrl?: string;
   caseStudy?: ProjectCaseStudy;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "freshpick",
+    title: "UX/UI CASE STUDY – FRESHPICK GROCERY APP",
+    subtitle: "Wireframes & Design Process | Renewed JioMart Experience",
+    description:
+      "A UI/UX case study focused on redesigning the grocery shopping experience — fast discovery, clear checkout, and real-time order tracking.",
+    tags: ["Figma", "UI/UX", "Wireframes", "Design System", "Prototype"],
+    color: "primary",
+    liveUrl: "https://freshpick-zeta.vercel.app/",
+    logic:
+      "Research uncovered cluttered category navigation and a confusing multi-step checkout. The redesign focuses on quick discovery, slot-based delivery, and simplified checkout to reduce abandonment.",
+    highlights: ["Fresh groceries, delivered fast", "10-min delivery banner", "Slot-based scheduling", "Order tracking"],
+    caseStudy: {
+      projectType: "UI/UX Case Study",
+      duration: "2-3 Weeks",
+      role: "Product Designer (End-to-end UI/UX)",
+      bannerTagline: "Wireframes & design process for a renewed grocery app experience",
+      problemStatement:
+        "Users faced difficulty finding products quickly, cluttered category navigation, and a confusing multi-step checkout leading to cart abandonment.",
+      targetUsers: ["Busy urban shoppers", "Users needing quick reorder", "Slot-based delivery customers"],
+      researchInsights: [
+        "Cluttered homepage reduces discoverability.",
+        "Users want clear product details and fast reorder options.",
+        "Slot visibility and simple checkout reduces abandonment.",
+      ],
+      solution: [
+        "Introduced clean category listing and smart search with filters.",
+        "Designed detailed product cards with reviews and quick add-to-cart.",
+        "Simplified checkout with UPI/COD options and slot scheduling.",
+        "Added real-time order tracking and clear delivery ETAs.",
+      ],
+      designSystem: {
+        colors: [
+          { name: "Fresh Green", value: "#10B981", usage: "Primary CTA and highlights" },
+          { name: "Deep Charcoal", value: "#0F172A", usage: "Background and surface contrast" },
+          { name: "Muted Grey", value: "#9CA3AF", usage: "Secondary text and dividers" },
+        ],
+        typography: ["Inter for UI", "Inter SemiBold for headings"],
+      },
+      features: [
+        { title: "Smart Search & Filters", description: "Fast discovery with category-based filters and suggestions." },
+        { title: "Quick Add & Reorder", description: "Add to cart from product list and reorder past purchases." },
+        { title: "Slot-based Delivery", description: "Choose convenient delivery slots with clear availability." },
+        { title: "Simplified Checkout", description: "Single-step checkout with UPI, card, and COD options." },
+        { title: "Real-time Tracking", description: "Live order tracking with status milestones." },
+      ],
+      screens: ["/images/freshpick-case-study.svg"],
+      beforeAfter: [
+        { before: "Cluttered category navigation", after: "Clear category listing with helpful CTAs" },
+        { before: "Multi-step confusing checkout", after: "Streamlined checkout with clear payment options" },
+      ],
+      outcome: [
+        "Improved product discoverability through redesigned homepage and search",
+        "Fewer checkout drop-offs due to simplified flow",
+      ],
+      learnings: [
+        "Prioritizing clarity over feature density improves conversion.",
+        "Micro-interactions and slot visibility increase user confidence.",
+      ],
+    },
+  },
   {
     slug: "wealth-advisor",
     title: "Wealth Advisor",
